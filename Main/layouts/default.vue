@@ -151,8 +151,8 @@ export default class Default extends Vue {
 
     &__brand {
         &-container {
-            width: 70px;
-            height: 70px;
+            width: 107px;
+            height: 107px;
             @include breakpoint(mobile) {
                 width: 55px;
                 height: 55px;

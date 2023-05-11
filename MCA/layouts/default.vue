@@ -7,11 +7,11 @@
             <a 
                 :href="`/${$route.params.year}`"
                 @click="updateSelectedMode('')"
+                class="mcaayim__logo"
+                :class="`mcaayim__logo--${viewTheme}`"
             >          
                 <img
                     :src="require(`../../Assets/img/site/mca-ayim/year/${$route.params.year}-${viewTheme}-mca.png`)"
-                    class="mcaayim__logo"
-                    :class="`mcaayim__logo--${viewTheme}`"
                 >
             </a>
 
@@ -160,21 +160,21 @@ export default class Default extends Vue {
     }
 
     &__logo {
-        align-self: center;
+        display: flex;
+        align-items: center;
 
-        width: 150px;
-        padding-left: 6px;
-        @include breakpoint(tablet) {
-            width: 180px;
-            padding-left: 7px;
-        }
-        @include breakpoint(laptop) {
-            width: 225px;
-            padding-left: 9px;
-        }
-        @include breakpoint(desktop) {
-            width: 260px;
-            padding-left: 10px;
+        & img {
+            margin-left: 6px;
+            @include breakpoint(tablet) {
+                margin-left: 7px;
+            }
+            @include breakpoint(laptop) {
+                margin-left: 9px;
+            }
+            @include breakpoint(desktop) {
+                height: 57px;
+                margin-left: 43px;
+            }
         }
     }
 
@@ -204,7 +204,7 @@ export default class Default extends Vue {
         width: 100px;   
     }
     @include breakpoint(laptop) {
-        width: 128px;
+        width: 138px;
     }
 }
 
@@ -232,7 +232,7 @@ export default class Default extends Vue {
         }
         @include breakpoint(laptop) {
             margin-right: 10px;
-            height: 30px;   
+            height: 40px;   
         }
     }
     &--light {

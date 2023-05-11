@@ -64,7 +64,7 @@ export default class TheFooter extends Vue {
     }
 
     width: 100%;
-    height: 50px;
+    height: 59px;
     display: flex;
 }
 </style>

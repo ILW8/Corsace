@@ -244,7 +244,7 @@ export default class Default extends Vue {
 
 .event {
     background-color: $dark;
-    height: 180px;
+    height: 250px;
     min-width: 300px;
     width: 20%;
     display: flex;

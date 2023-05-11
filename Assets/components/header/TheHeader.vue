@@ -151,7 +151,7 @@ export default class TheHeader extends Vue {
     top: 0;
 
     width: 100%;
-    height: 70px;
+    height: 107px;
     @include breakpoint(mobile) {
         height: 55px;
     }

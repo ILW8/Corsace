@@ -47,17 +47,23 @@ export default class ThemeSwitcher extends Vue {
         width: 70px;
     }
 
+    &__corsace {
+        &:hover {
+            background-color: $pink;
+        }
+    }
+
+    &__mca-ayim {
+        &:hover {
+            background-color: $blue;
+        }
+    }
+
     @each $mode in $modes {
         &__#{$mode} {
             &:hover {
                 background-color: var(--#{$mode});
             }
-        }
-    }
-
-    &__corsace {
-        &:hover {
-            background-color: $pink;
         }
     }
 

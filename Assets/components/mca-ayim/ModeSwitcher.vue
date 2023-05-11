@@ -92,8 +92,8 @@ export default class ModeSwitcher extends Vue {
 @import '@s-sass/_variables';
 @import '@s-sass/_mixins';
 
-$icon-size: 45px;
-$icon-margin: 8px;
+$icon-size: 35px;
+$icon-margin: 22px;
 
 .mode {
     &__section {
@@ -116,7 +116,7 @@ $icon-margin: 8px;
             margin-right: 0;
         }
         @include breakpoint(desktop) {
-            margin-left: calc(50vw - 116px * 2.5 - 260px);
+            margin-left: calc(50vw - 144px * 2.5 - 57px * 373/87 - 43px);
             margin-right: 0;
         }
 
@@ -150,7 +150,6 @@ $icon-margin: 8px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
 
     @include breakpoint(mobile) {
         flex: 1;
@@ -160,6 +159,7 @@ $icon-margin: 8px;
     @include breakpoint(laptop) {
         font-size: $font-sm;
     }
+
     height: 100%;
     width: 50px;
     @include breakpoint(tablet) {
@@ -171,7 +171,7 @@ $icon-margin: 8px;
     @include breakpoint(desktop) {
         width: 100px;
     }
-    padding: 5px 0;
+
     @include breakpoint(laptop) {
         margin: 0 calc($icon-margin * 0.75);
     }
@@ -184,13 +184,11 @@ $icon-margin: 8px;
         &__#{$mode} {
             height: $icon-size;
             width: $icon-size;
+            margin-top: 38px;
+            margin-bottom: 10px;
             background-image: url("../../img/site/mca-ayim/mode/#{$mode}.svg");
             background-position: center;
             background-repeat: no-repeat;
-            background-size: calc($icon-size * 0.3);
-            @include breakpoint(laptop) {
-                background-size: calc($icon-size * 0.6);
-            }
 
             &--dark {
                 filter: invert(1);

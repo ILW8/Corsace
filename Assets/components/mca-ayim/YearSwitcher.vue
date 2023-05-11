@@ -147,8 +147,8 @@ export default class YearSwitcher extends Vue {
             }
             margin-left: auto;
             @include breakpoint(laptop) {
-                /* 50vw - corsace logo width - icon margin - 3 icons - 2 dots - first year */
-                margin-left: calc(50vw - 128px - 5px - (30px * 99 / 84 + 10px) * 3 - 13px * 2 - 27px);
+                /* 50vw - corsace logo width - icon margin - 4 icons - 2 dots - first year */
+                margin-left: calc(50vw - 128px - 5px - (30px * 99 / 84 + 10px) * 4 - 21px * 2 - 23px);
             }
         }
         &--three {
@@ -157,8 +157,8 @@ export default class YearSwitcher extends Vue {
             }
             margin-left: auto;
             @include breakpoint(laptop) {
-                /* 50vw - corsace logo width - icon margin - 3 icons - 4 dots - (first year + 1/2 of second year) */
-                margin-left: calc(50vw - 128px - 5px - (30px * 99 / 84 + 10px) * 3 - 13px * 4 - 1.5 * 27px);
+                /* 50vw - corsace logo width - icon margin - 4 icons - 4 dots - (first year + 1/2 of second year) */
+                margin-left: calc(50vw - 128px - 5px - (40px * 99 / 84 + 10px) * 4 - 21px * 4 - 1.5 * 23px);
             }
         }
         @include breakpoint(mobile) {
@@ -169,55 +169,62 @@ export default class YearSwitcher extends Vue {
 
         display: flex;
         justify-content: center;
-        align-items: center;
+        align-items: flex-end;
 
         &--year {
+            width: 23px;
+
             font-size: $font-sm;
-            color: $blue;
+            color: $light-blue;
 
             display: flex;
             flex-direction: column;
-            justify-content: center;
             align-items: center;
+
+            margin-bottom: 19px;
 
             &:hover {
                 text-decoration: none;
             }
 
             &-current {
-                font-weight: bold;
+                margin-bottom: 16px;
             }
         }
     }
 
     &__dot {
-        height: 3px;
-        width: 3px;
+        height: 4px;
+        width: 4px;
 
         display: flex;
         align-self: end;
-        margin: 0 2.5px 13px;
+        margin: 0 4.25px 23px;
         @include breakpoint(laptop) {
-            margin: 0 5px 13px;
+            margin: 0 8.5px 23px;
         }
 
         &--big {
-            height: 6px;
-            width: 6px;
+            height: 11px;
+            width: 11px;
 
             align-self: center;
             margin: 0;
+            margin-top: 3px;
 
             &-current {
-                height: 12px;
-                width: 12px;
-                border: 2px #136083 solid;
+                height: 17px;
+                width: 17px;
+
+                background-color: #D8F0FA;
+                
+                border: 3px $light-blue solid;
+                margin-top: 0;
             }
         }
 
         border-radius: 50%;
-        background-color: $blue;
-        box-shadow: 0 0 2px $blue;
+        background-color: $light-blue;
 
         position: relative;
     }
