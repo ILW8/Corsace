@@ -948,15 +948,14 @@ export default class Index extends Vue {
             display: flex;
             flex-direction: column;
             justify-content: center;
-            align-items: center;
 
             padding: 15px 0;
 
             & > img {
                 @include breakpoint(mobile) {
-                    height: 40px;
+                    height: 54px;
                 }
-                height: 70px;
+                height: 87px;
                 margin: 25px 0;
             }
         }

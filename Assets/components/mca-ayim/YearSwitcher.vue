@@ -148,7 +148,7 @@ export default class YearSwitcher extends Vue {
             margin-left: auto;
             @include breakpoint(laptop) {
                 /* 50vw - corsace logo width - icon margin - 4 icons - 2 dots - first year */
-                margin-left: calc(50vw - 128px - 5px - (30px * 99 / 84 + 10px) * 4 - 21px * 2 - 23px);
+                margin-left: calc(50vw - 138px - 5px - (30px * 99 / 84 + 10px) * 4 - 21px * 2 - 23px);
             }
         }
         &--three {
@@ -158,7 +158,7 @@ export default class YearSwitcher extends Vue {
             margin-left: auto;
             @include breakpoint(laptop) {
                 /* 50vw - corsace logo width - icon margin - 4 icons - 4 dots - (first year + 1/2 of second year) */
-                margin-left: calc(50vw - 128px - 5px - (40px * 99 / 84 + 10px) * 4 - 21px * 4 - 1.5 * 23px);
+                margin-left: calc(50vw - 138px - 5px - (40px * 99 / 84 + 10px) * 4 - 21px * 4 - 1.5 * 23px);
             }
         }
         @include breakpoint(mobile) {
