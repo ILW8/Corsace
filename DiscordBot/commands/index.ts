@@ -1,4 +1,4 @@
-import { ChatInputCommandInteraction, Message, SlashCommandBuilder, SlashCommandSubcommandsOnlyBuilder } from "discord.js";
+import { ChatInputCommandInteraction, Message, SlashCommandBuilder, SlashCommandSubcommandsOnlyBuilder, ThreadChannel } from "discord.js";
 
 import tournamentCreate from "./tournaments/create";
 import tournamentList from "./tournaments/list";
@@ -11,6 +11,7 @@ import mappoolCreate from "./tournaments/mappool/create";
 import mappoolDeadline from "./tournaments/mappool/deadline";
 import mappoolDownload from "./tournaments/mappool/download";
 import mappoolInfo from "./tournaments/mappool/info";
+import mappoolPublish from "./tournaments/mappool/publish";
 import mappoolRemove from "./tournaments/mappool/remove";
 import mappoolSubmit from "./tournaments/mappool/submit";
 import mappoolSwap from "./tournaments/mappool/swap";
@@ -29,6 +30,11 @@ import influenceAdd from "./osu/influenceAdd";
 import influenceRemove from "./osu/influenceRemove";
 import profile from "./osu/profile";
 import recent from "./osu/recent";
+
+import { TournamentChannelType } from "../../Models/tournaments/tournamentChannel";
+import { mappoolQACreate, mappoolQADelete } from "./threadCommands/mapoolQA";
+import { jobBoardCreate, jobBoardDelete } from "./threadCommands/jobBoard";
+import { mappoolComponentsThreadType } from "../functions/tournamentFunctions/mappoolComponentsThread";
 
 interface Command {
     data: SlashCommandBuilder | Omit<SlashCommandBuilder, "addSubcommand" | "addSubcommandGroup"> | SlashCommandSubcommandsOnlyBuilder;
@@ -57,6 +63,7 @@ commands.push(mappoolCreate);
 commands.push(mappoolDeadline);
 commands.push(mappoolDownload);
 commands.push(mappoolInfo);
+commands.push(mappoolPublish);
 commands.push(mappoolRemove);
 commands.push(mappoolSubmit);
 commands.push(mappoolSwap);
@@ -79,4 +86,15 @@ commands.push(influenceRemove);
 commands.push(profile);
 commands.push(recent);
 
-export { commands, Command };
+type threadCommand = (t: ThreadChannel, components: mappoolComponentsThreadType) => Promise<void>;
+
+type threadCommands = {
+    [key in TournamentChannelType]: { create: threadCommand; delete: threadCommand; } | undefined;
+};
+
+const threadCommands = {
+    [TournamentChannelType.Mappoolqa]: { create: mappoolQACreate, delete: mappoolQADelete },
+    [TournamentChannelType.Jobboard]: { create: jobBoardCreate, delete: jobBoardDelete },
+} as threadCommands;
+
+export { commands, Command, threadCommands };

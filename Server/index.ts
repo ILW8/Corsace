@@ -78,10 +78,21 @@ koa.use(async (ctx, next) => {
 
         await next();
     } catch (err: any) {
-        console.log(err);
-        
         ctx.status = err.status || 500;
-        ctx.body = { error: "Something went wrong!" };
+
+        if (ctx.status >= 500) {
+            ctx.body = { 
+                error: "Something went wrong!",
+                status: ctx.status,
+            };            
+            console.log(err);
+            return;
+        }
+
+        ctx.body = { 
+            error: err.message,
+            status: ctx.status,
+        };
     }
 });
 
@@ -128,8 +139,8 @@ koa.use(Mount("/", helloWorldRouter.routes()));
 koa.use(Mount("/api", helloWorldRouter.routes()));
 
 ormConfig.initialize()
-    .then((connection) => {
-        console.log(`Connected to the ${connection.options.database} (${connection.options.name}) database!`);
+    .then(async (connection) => {
+        console.log(`Connected to the ${connection.options.database} database!`);
         setupPassport();
         koa.listen(config.api.port);
     })

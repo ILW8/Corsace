@@ -1,5 +1,6 @@
 import { Interaction } from "discord.js";
 import { commands } from "../commands";
+import errorHandler from "../functions/error";
 
 export default async function interactionCreate (interaction: Interaction) {
     if (!interaction.isChatInputCommand()) return;
@@ -11,9 +12,7 @@ export default async function interactionCreate (interaction: Interaction) {
     }
     try {
         await command.run(interaction);
-    } catch (error) {
-        console.log("Yo");
-        console.error(error);
-        await interaction.followUp({ content: "There was an error while executing this command!", ephemeral: true });
+    } catch (e) {
+        errorHandler(e, interaction);
     }
 }
